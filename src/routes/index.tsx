@@ -55,7 +55,7 @@ const journey = [
 ];
 
 const pillars = [
-  { t: "International Clients",  d: "Dressing brides and clients across Lagos, London, Dubai, Houston and beyond." },
+  { t: "International Clients",  d: "Dressing brides and clients across Abuja, London, Dubai, Houston and beyond." },
   { t: "Luxury Craftsmanship",   d: "A hand-finished discipline. Every seam, every bead, considered." },
   { t: "Private Consultations",  d: "By appointment only. Intimate sessions, undivided attention." },
   { t: "Timely Delivery",        d: "Structured production timelines, transparent milestones, on-time collection." },
@@ -173,7 +173,7 @@ function Hero() {
 
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-between px-6 pt-32 pb-10 md:px-12 md:pt-40 md:pb-16">
         <div className="fade-up">
-          <p className="eyebrow text-ivory/80">Maison — Est. Lagos</p>
+          <p className="eyebrow text-ivory/80">Maison — Est. Abuja</p>
         </div>
 
         <div className="max-w-4xl fade-up" style={{ animationDelay: "0.2s" }}>
@@ -334,12 +334,12 @@ function About() {
             A quiet <em className="italic font-light">discipline</em> of hand-finished couture.
           </h2>
           <div className="mt-10 space-y-6 text-base leading-relaxed text-ink-soft md:text-lg">
-            <p>Belle By Essy is a Lagos-based house building garments for the woman who has already decided who she is.</p>
+            <p>Belle By Essy is an Abuja-based house building garments for the woman who has already decided who she is.</p>
             <p>We work in small numbers. Each commission is drafted, cut and hand-finished within our atelier — never rushed, never repeated.</p>
             <p>Our clients arrive by referral, from three continents, for weddings, ceremonies and moments that deserve permanence.</p>
           </div>
           <dl className="mt-14 grid grid-cols-2 gap-8 border-t border-line pt-10 md:grid-cols-3">
-            <div><dt className="eyebrow">Founded</dt><dd className="mt-2 font-display text-3xl">Lagos</dd></div>
+            <div><dt className="eyebrow">Founded</dt><dd className="mt-2 font-display text-3xl">Abuja</dd></div>
             <div><dt className="eyebrow">Commissions</dt><dd className="mt-2 font-display text-3xl">By Invitation</dd></div>
             <div><dt className="eyebrow">Delivery</dt><dd className="mt-2 font-display text-3xl">Worldwide</dd></div>
           </dl>
@@ -454,7 +454,7 @@ function Contact() {
               <br /> conversation.
             </h2>
             <p className="mt-8 max-w-md text-base leading-relaxed text-ink-soft">
-              Consultations are held privately in our Lagos atelier or virtually for international clientele. Kindly share your event date, garment intention and city — we will respond within one business day.
+              Consultations are held privately in our Abuja atelier or virtually for international clientele. Kindly share your event date, garment intention and city — we will respond within one business day.
             </p>
           </div>
 
@@ -480,7 +480,7 @@ function Contact() {
               </li>
               <li className="grid grid-cols-[9rem_1fr] gap-6 py-6">
                 <span className="eyebrow pt-1">Atelier</span>
-                <span className="font-display text-2xl md:text-3xl">Lagos, Nigeria<br /><span className="text-base text-mute">By private appointment</span></span>
+                <span className="font-display text-2xl md:text-3xl">Abuja, Nigeria<br /><span className="text-base text-mute">By private appointment</span></span>
               </li>
               <li className="grid grid-cols-[9rem_1fr] gap-6 py-6">
                 <span className="eyebrow pt-1">Hours</span>
@@ -576,7 +576,7 @@ function Footer() {
               <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">WhatsApp Atelier</a></li>
               <li><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">Instagram — @belle_byessy</a></li>
               <li><a href="mailto:atelier@bellebyessy.com" className="hover:text-gold transition">atelier@bellebyessy.com</a></li>
-              <li className="text-mute">Lagos, Nigeria · By appointment</li>
+              <li className="text-mute">Abuja, Nigeria · By appointment</li>
             </ul>
           </div>
         </div>
