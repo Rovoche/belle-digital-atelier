@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react"; import { createFileRoute } from "@tanstack/react-router";import { Menu, X } from "lucide-react";
 import { RovocheModal } from "@/components/RovocheModal";
 import sapphireVideo from "../../public/sapphire-heritage-kaftan.mp4.asset.json";
 
@@ -81,28 +81,79 @@ function Home() {
 }
 
 /* ─────────────────────────── NAV ─────────────────────────── */
+const navLinks = [
+  { href: "#collections", label: "Collections" },
+  { href: "#signature", label: "Signature" },
+  { href: "#journey", label: "Couture Journey" },
+  { href: "#about", label: "Maison" },
+  { href: "#contact", label: "Contact" },
+];
+
 function Nav() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-ivory/80 backdrop-blur-md border-b border-line/60">
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 md:px-12 md:py-5">
-        <a href="#top" className="flex items-center gap-3">
-          <img src="/logo.png" alt="Belle By Essy" className="h-8 w-auto md:h-10" />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-ivory/80 backdrop-blur-md border-b border-line/60">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-3 md:px-12 md:py-5">
+        <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <img src="/logo.png" alt="Belle By Essy" className="h-14 w-auto md:h-16" />
         </a>
+
         <nav className="hidden gap-10 text-[0.7rem] uppercase tracking-[0.28em] text-ink-soft md:flex">
-          <a href="#collections" className="hover:text-ink transition">Collections</a>
-          <a href="#signature" className="hover:text-ink transition">Signature</a>
-          <a href="#journey" className="hover:text-ink transition">Couture Journey</a>
-          <a href="#about" className="hover:text-ink transition">Maison</a>
-          <a href="#contact" className="hover:text-ink transition">Contact</a>
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-ink transition">
+              {link.label}
+            </a>
+          ))}
         </nav>
-        <a
+
+        
           href="#contact"
           className="hidden md:inline-block border-b border-ink pb-1 text-[0.7rem] uppercase tracking-[0.28em]"
         >
           Book Consultation
         </a>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="md:hidden -mr-2 p-2 text-ink"
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {/* Mobile menu panel */}
+      <div
+        className={`md:hidden overflow-hidden border-t border-line/60 bg-ivory transition-[max-height,opacity] duration-300 ease-in-out ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col px-6 py-6 text-sm uppercase tracking-[0.28em] text-ink-soft">
+          {navLinks.map((link) => (
+            
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-line/40 py-4 hover:text-ink transition"
+            >
+              {link.label}
+            </a>
+          ))}
+          
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-6 inline-block border border-ink px-6 py-3 text-center text-[0.7rem] uppercase tracking-[0.28em]"
+          >
+            Book Consultation
+          </a>
+        </nav>
       </div>
     </header>
+  );
+}
   );
 }
 
