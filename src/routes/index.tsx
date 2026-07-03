@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { RovocheModal } from "@/components/RovocheModal";
@@ -78,6 +78,7 @@ function Home() {
       <InstagramBlock />
       <Contact />
       <Footer />
+      <RovocheBadge />
     </div>
   );
 }
@@ -98,7 +99,7 @@ function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-ivory/80 backdrop-blur-md border-b border-line/60">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-3 md:px-12 md:py-5">
         <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="Belle By Essy" className="h-14 w-auto md:h-16" />
+          <img src="/logo.png" alt="Belle By Essy" className="h-16 w-auto md:h-20" />
         </a>
 
         <nav className="hidden gap-10 text-[0.7rem] uppercase tracking-[0.28em] text-ink-soft md:flex">
@@ -504,6 +505,51 @@ function Contact() {
   );
 }
 
+/* ─────────────────────────── ROVOCHE BADGE ─────────────────────────── */
+function RovocheBadge() {
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setVisible(window.scrollY > 400);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (dismissed) return null;
+
+  return (
+    <a
+      href="https://www.rovoche.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`fixed bottom-6 left-6 z-50 flex items-center gap-2 rounded-full border border-line/70 bg-ivory/95 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-500 ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none"
+      }`}
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-red-700" />
+      <span className="text-[0.62rem] uppercase tracking-[0.22em] text-ink-soft">
+        Concept by <span className="font-semibold text-ink">Rovoche</span>
+      </span>
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setDismissed(true);
+        }}
+        aria-label="Dismiss"
+        className="ml-1 text-ink-soft hover:text-ink"
+      >
+        <X className="h-3.5 w-3.5" />
+      </button>
+    </a>
+  );
+}
+
 /* ─────────────────────────── FOOTER ─────────────────────────── */
 function Footer() {
   return (
@@ -511,7 +557,7 @@ function Footer() {
       <div className="mx-auto max-w-[1600px]">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
-            <img src="/logo.png" alt="Belle By Essy" className="h-10 w-auto" />
+            <img src="/logo.png" alt="Belle By Essy" className="h-14 w-auto" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ink-soft">
               A Nigerian luxury fashion house crafting bridal and occasion couture, by private consultation.
             </p>
@@ -548,7 +594,17 @@ function Footer() {
             <p className="font-display text-2xl leading-tight md:text-3xl">
               Built on Rock. <em className="italic font-light">Crafted to Last.</em>
             </p>
-            <p className="mt-2 text-[0.7rem] uppercase tracking-[0.5em] text-ink">— Rovoche</p>
+            <p className="mt-2 text-[0.7rem] uppercase tracking-[0.5em] text-ink">
+              —{" "}
+              <a
+                href="https://www.rovoche.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gold transition"
+              >
+                Rovoche
+              </a>
+            </p>
             <p className="mt-1 text-[0.65rem] uppercase tracking-[0.35em] text-mute">
               Demo Experience for Belle By Essy
             </p>
