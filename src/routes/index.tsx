@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { RovocheModal } from "@/components/RovocheModal";
-import sapphireVideo from "../../public/sapphire-heritage-kaftan.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -99,7 +98,7 @@ function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-ivory/80 backdrop-blur-md border-b border-line/60">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-3 md:px-12 md:py-5">
         <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="Belle By Essy" className="h-16 w-auto md:h-20" />
+          <img src="/logo.png" alt="Belle By Essy" className="h-11 w-auto md:h-14" />
         </a>
 
         <nav className="hidden gap-10 text-[0.7rem] uppercase tracking-[0.28em] text-ink-soft md:flex">
@@ -407,7 +406,7 @@ function Pillars() {
         <div className="mt-24 grid grid-cols-1 gap-6 md:grid-cols-3">
           <video className="aspect-[3/4] w-full object-cover" src="/royal-fuchsia-1.mp4" muted loop playsInline autoPlay preload="metadata" />
           <video className="aspect-[3/4] w-full object-cover" src="/ivory-rose-video.mp4" muted loop playsInline autoPlay preload="metadata" />
-          <video className="aspect-[3/4] w-full object-cover" src={sapphireVideo.url} muted loop playsInline autoPlay preload="metadata" />
+          <video className="aspect-[3/4] w-full object-cover" src="/royal-fuchsia-2.mp4" muted loop playsInline autoPlay preload="metadata" />
         </div>
       </div>
     </section>
@@ -557,7 +556,7 @@ function Footer() {
       <div className="mx-auto max-w-[1600px]">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
-            <img src="/logo.png" alt="Belle By Essy" className="h-14 w-auto" />
+            <img src="/logo.png" alt="Belle By Essy" className="h-11 w-auto" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ink-soft">
               A Nigerian luxury fashion house crafting bridal and occasion couture, by private consultation.
             </p>
