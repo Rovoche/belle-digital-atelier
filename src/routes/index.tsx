@@ -1,4 +1,6 @@
-import { useState } from "react"; import { createFileRoute } from "@tanstack/react-router";import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Menu, X } from "lucide-react";
 import { RovocheModal } from "@/components/RovocheModal";
 import sapphireVideo from "../../public/sapphire-heritage-kaftan.mp4.asset.json";
 
@@ -107,7 +109,7 @@ function Nav() {
           ))}
         </nav>
 
-        
+        <a
           href="#contact"
           className="hidden md:inline-block border-b border-ink pb-1 text-[0.7rem] uppercase tracking-[0.28em]"
         >
@@ -133,7 +135,7 @@ function Nav() {
       >
         <nav className="flex flex-col px-6 py-6 text-sm uppercase tracking-[0.28em] text-ink-soft">
           {navLinks.map((link) => (
-            
+            <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
@@ -142,7 +144,7 @@ function Nav() {
               {link.label}
             </a>
           ))}
-          
+          <a
             href="#contact"
             onClick={() => setOpen(false)}
             className="mt-6 inline-block border border-ink px-6 py-3 text-center text-[0.7rem] uppercase tracking-[0.28em]"
@@ -152,8 +154,6 @@ function Nav() {
         </nav>
       </div>
     </header>
-  );
-}
   );
 }
 
