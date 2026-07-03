@@ -14,21 +14,14 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-ivory px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <p className="eyebrow">404 — Not Found</p>
+        <h1 className="display-lg mt-6">This page does not exist</h1>
+        <p className="mt-4 text-sm text-mute">The page you're looking for is unavailable.</p>
+        <Link to="/" className="mt-8 inline-block border-b border-ink pb-1 text-sm tracking-widest uppercase">
+          Return to the atelier
+        </Link>
       </div>
     </div>
   );
@@ -42,30 +35,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-ivory px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+        <p className="eyebrow">Something interrupted</p>
+        <h1 className="display-lg mt-6">This page didn't load</h1>
+        <div className="mt-8 flex justify-center gap-4 text-sm uppercase tracking-widest">
+          <button onClick={() => { router.invalidate(); reset(); }} className="border-b border-ink pb-1">Try again</button>
+          <a href="/" className="border-b border-ink pb-1">Home</a>
         </div>
       </div>
     </div>
@@ -77,21 +53,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Belle By Essy — Luxury Bridal & Occasion Couture" },
+      { name: "description", content: "A Nigerian luxury fashion house crafting bridal, evening, and heritage couture for a discerning international clientele. By private consultation." },
+      { name: "author", content: "Belle By Essy" },
+      { name: "keywords", content: "luxury bridal couture, Nigerian fashion designer, custom bridal gowns, evening couture, occasion wear, Asooke, kaftan, heritage couture" },
+      { property: "og:title", content: "Belle By Essy — Luxury Bridal & Occasion Couture" },
+      { property: "og:description", content: "A Nigerian luxury fashion house crafting bridal, evening, and heritage couture for a discerning international clientele." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/ivory-rose-2.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:image", content: "/ivory-rose-2.jpg" },
+      { name: "twitter:title", content: "Belle By Essy — Luxury Bridal & Occasion Couture" },
+      { name: "twitter:description", content: "Nigerian luxury bridal & occasion couture. By private consultation." },
+      { name: "theme-color", content: "#f6f2e9" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/jpeg", href: "/favicon.jpg" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FashionBrand",
+          name: "Belle By Essy",
+          description: "Luxury bridal and occasion couture house based in Nigeria.",
+          url: "/",
+          logo: "/logo.png",
+          sameAs: ["https://www.instagram.com/belle_byessy/"],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -116,10 +114,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
